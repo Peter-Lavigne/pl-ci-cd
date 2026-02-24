@@ -11,17 +11,8 @@ if [[ -z "${UV_PUBLISH_TOKEN:-}" ]]; then
   exit 1
 fi
 
-echo 'Running "ruff format"...'
-ruff format .
-
-echo 'Running "ruff check --fix"...'
-ruff check --fix
-
-echo 'Running "uv run pyright src"...'
-uv run pyright src
-
-echo 'Running "uv run pytest --cov --cov-fail-under=100 --cov-report=term-missing"...'
-uv run pytest --cov --cov-fail-under=100 --cov-report=term-missing
+echo 'Running "uv run check --fix"...'
+uv run check --fix
 
 echo 'Running "rm -f dist/*.whl dist/*.tar.gz"...'
 rm -f dist/*.whl dist/*.tar.gz
