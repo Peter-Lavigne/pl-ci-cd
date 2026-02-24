@@ -175,7 +175,7 @@ wheels = [
 
 [[package]]
 name = "pl-ci-cd"
-version = "0.0.15"
+version = "0.0.16"
 source = { editable = "." }
 dependencies = [
     { name = "pl-run-program" },
@@ -196,14 +196,14 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "pl-run-program", specifier = ">=0.0.25" },
-    { name = "pl-user-io", specifier = "==0.0.10" },
+    { name = "pl-user-io", specifier = "==0.0.11" },
     { name = "typer", specifier = ">=0.21.1" },
 ]
 
 [package.metadata.requires-dev]
 dev = [
-    { name = "pl-mocks-and-fakes", specifier = "==0.0.24" },
-    { name = "pl-user-io", extras = ["testing"], specifier = "==0.0.10" },
+    { name = "pl-mocks-and-fakes", specifier = "==0.0.26" },
+    { name = "pl-user-io", extras = ["testing"], specifier = "==0.0.11" },
     { name = "pyright", specifier = ">=1.1.408" },
     { name = "pytest", specifier = ">=9.0.2" },
     { name = "pytest-cov", specifier = ">=7.0.0" },
@@ -212,14 +212,14 @@ dev = [
 
 [[package]]
 name = "pl-mocks-and-fakes"
-version = "0.0.24"
+version = "0.0.26"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "pydantic" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/69/ad/1247b0c2a1a73185ff57b0dd81c9a28b463a2eeecddbb593367caa8fefe3/pl_mocks_and_fakes-0.0.24.tar.gz", hash = "sha256:1beb6303807a7b0dbe952f528dcda9bde3f9d49372aadda05a8868df7ea9bda2", size = 8905, upload-time = "2026-02-24T19:51:49.851Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/ff/41/5246565a9a1132f58e02f341eb4b05b8945fb18854d7eee4fac2bf32a485/pl_mocks_and_fakes-0.0.26.tar.gz", hash = "sha256:a311e9aacdfc60e98eceeef14e6a777fa34d2abc9661aada3a18133adb19a2a3", size = 8917, upload-time = "2026-02-24T21:44:58.602Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/8b/1a/a07718485001e328d5d404aa290f8e3798930eeac69aba1d8cd63ca3bb18/pl_mocks_and_fakes-0.0.24-py3-none-any.whl", hash = "sha256:041bae35d1f023b5e2af313dd864de81d46112b7e67d0159a7aee5cdc8122b23", size = 11315, upload-time = "2026-02-24T19:51:50.909Z" },
+    { url = "https://files.pythonhosted.org/packages/4f/8b/0abc845e44efeea36d5e46341f896d92217fb14fb7ea9bd48b070dc8b302/pl_mocks_and_fakes-0.0.26-py3-none-any.whl", hash = "sha256:eee2f93ab7af91632a7445314efa762b268e0fe1ea733950e4d6c20a35437fab", size = 11315, upload-time = "2026-02-24T21:44:57.809Z" },
 ]
 
 [[package]]
@@ -233,14 +233,14 @@ wheels = [
 
 [[package]]
 name = "pl-user-io"
-version = "0.0.10"
+version = "0.0.11"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "rich" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/eb/83/a6121ef1225e1500c7ac136608a0f1d5dc19d7b6b21a5d26d74ad9208f2b/pl_user_io-0.0.10.tar.gz", hash = "sha256:69c0668fd826aee2cdaa784609d4f1d1796822ef02f591f1f9941f687019b514", size = 9111, upload-time = "2026-02-24T21:43:04.469Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/e7/cf/9f275d552b0eefce9568b10ca2e6b68cdb17669fff93ba060e9aabf1e662/pl_user_io-0.0.11.tar.gz", hash = "sha256:315e3029a3732ed791981ac9ad92a9b5ab1ff40fe4fad25a561babd3e2220d7b", size = 9096, upload-time = "2026-02-24T21:47:57.046Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/ce/f0/f806217df19454be84f0618c9d7a7723fd8f1b003a584aa2b04895302aa9/pl_user_io-0.0.10-py3-none-any.whl", hash = "sha256:567fea35c94b74ff92323f66e194fc8cb67a1139a0a9ad14ee6600e4f86b6bb9", size = 14344, upload-time = "2026-02-24T21:43:03.295Z" },
+    { url = "https://files.pythonhosted.org/packages/0e/79/6f1f12602953d328c2ed261c9c5e2b4f11a7469b94b9d80635ddf796b402/pl_user_io-0.0.11-py3-none-any.whl", hash = "sha256:1aa267fa094bdb5f80be448a2b03205c0f69a80133a8b421b6e04765155b6bcf", size = 14346, upload-time = "2026-02-24T21:47:57.704Z" },
 ]
 
 [package.optional-dependencies]
