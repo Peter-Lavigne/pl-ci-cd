@@ -175,7 +175,7 @@ wheels = [
 
 [[package]]
 name = "pl-ci-cd"
-version = "0.0.14"
+version = "0.0.15"
 source = { editable = "." }
 dependencies = [
     { name = "pl-run-program" },
@@ -186,6 +186,7 @@ dependencies = [
 [package.dev-dependencies]
 dev = [
     { name = "pl-mocks-and-fakes" },
+    { name = "pl-user-io", extra = ["testing"] },
     { name = "pyright" },
     { name = "pytest" },
     { name = "pytest-cov" },
@@ -195,13 +196,14 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "pl-run-program", specifier = ">=0.0.25" },
-    { name = "pl-user-io", specifier = "==0.0.9" },
+    { name = "pl-user-io", specifier = "==0.0.10" },
     { name = "typer", specifier = ">=0.21.1" },
 ]
 
 [package.metadata.requires-dev]
 dev = [
     { name = "pl-mocks-and-fakes", specifier = "==0.0.24" },
+    { name = "pl-user-io", extras = ["testing"], specifier = "==0.0.10" },
     { name = "pyright", specifier = ">=1.1.408" },
     { name = "pytest", specifier = ">=9.0.2" },
     { name = "pytest-cov", specifier = ">=7.0.0" },
@@ -231,15 +233,19 @@ wheels = [
 
 [[package]]
 name = "pl-user-io"
-version = "0.0.9"
+version = "0.0.10"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "pl-mocks-and-fakes" },
     { name = "rich" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/d4/04/65a721ef6f5120738e3c763e51467d30125d6e7e5252342a0e2406e567c0/pl_user_io-0.0.9.tar.gz", hash = "sha256:2b527d64bc6bec9b3e6678be17e7b06bda32cd7de0be7a51b762e9062f1a05de", size = 9072, upload-time = "2026-02-24T21:29:20.451Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/eb/83/a6121ef1225e1500c7ac136608a0f1d5dc19d7b6b21a5d26d74ad9208f2b/pl_user_io-0.0.10.tar.gz", hash = "sha256:69c0668fd826aee2cdaa784609d4f1d1796822ef02f591f1f9941f687019b514", size = 9111, upload-time = "2026-02-24T21:43:04.469Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/81/59/280c41b8b072908bac12203061cfbe364cc56e4c671822147fad8afc6e80/pl_user_io-0.0.9-py3-none-any.whl", hash = "sha256:0097487b5c2fc41a72aaaf85e09e3520eb7bb2810381fba069285c8af097d7bd", size = 14305, upload-time = "2026-02-24T21:29:19.377Z" },
+    { url = "https://files.pythonhosted.org/packages/ce/f0/f806217df19454be84f0618c9d7a7723fd8f1b003a584aa2b04895302aa9/pl_user_io-0.0.10-py3-none-any.whl", hash = "sha256:567fea35c94b74ff92323f66e194fc8cb67a1139a0a9ad14ee6600e4f86b6bb9", size = 14344, upload-time = "2026-02-24T21:43:03.295Z" },
+]
+
+[package.optional-dependencies]
+testing = [
+    { name = "pl-mocks-and-fakes" },
 ]
 
 [[package]]
