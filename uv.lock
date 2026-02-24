@@ -175,7 +175,7 @@ wheels = [
 
 [[package]]
 name = "pl-ci-cd"
-version = "0.0.12"
+version = "0.0.13"
 source = { editable = "." }
 dependencies = [
     { name = "pl-run-program" },
