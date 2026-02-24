@@ -1,6 +1,6 @@
 [project]
 name = "pl-ci-cd"
-version = "0.0.17"
+version = "0.0.18"
 description = "Continuous integration and continuous deployment of python projects."
 readme = "README.md"
 authors = [{ name = "Peter Lavigne" }]
@@ -10,6 +10,10 @@ dependencies = [
     "pl-user-io==0.0.11",
     "typer>=0.21.1",
     "pl-mocks-and-fakes==0.0.26",
+    "pyright>=1.1.408",
+    "pytest>=9.0.2",
+    "pytest-cov>=7.0.0",
+    "ruff>=0.15.2",
 ]
 license = "Apache-2.0"
 license-files = ["LICENSE"]
@@ -27,13 +31,7 @@ requires = ["uv_build>=0.10.4,<0.11.0"]
 build-backend = "uv_build"
 
 [dependency-groups]
-dev = [
-    "pl-user-io[testing]==0.0.11",
-    "pyright>=1.1.408",
-    "pytest>=9.0.2",
-    "pytest-cov>=7.0.0",
-    "ruff>=0.15.2",
-]
+dev = ["pl-user-io[testing]==0.0.11"]
 
 [tool.pytest.ini_options]
 addopts = [

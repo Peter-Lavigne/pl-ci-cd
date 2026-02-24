@@ -175,22 +175,22 @@ wheels = [
 
 [[package]]
 name = "pl-ci-cd"
-version = "0.0.17"
+version = "0.0.18"
 source = { editable = "." }
 dependencies = [
     { name = "pl-mocks-and-fakes" },
     { name = "pl-run-program" },
     { name = "pl-user-io" },
+    { name = "pyright" },
+    { name = "pytest" },
+    { name = "pytest-cov" },
+    { name = "ruff" },
     { name = "typer" },
 ]
 
 [package.dev-dependencies]
 dev = [
     { name = "pl-user-io", extra = ["testing"] },
-    { name = "pyright" },
-    { name = "pytest" },
-    { name = "pytest-cov" },
-    { name = "ruff" },
 ]
 
 [package.metadata]
@@ -198,17 +198,15 @@ requires-dist = [
     { name = "pl-mocks-and-fakes", specifier = "==0.0.26" },
     { name = "pl-run-program", specifier = ">=0.0.25" },
     { name = "pl-user-io", specifier = "==0.0.11" },
-    { name = "typer", specifier = ">=0.21.1" },
-]
-
-[package.metadata.requires-dev]
-dev = [
-    { name = "pl-user-io", extras = ["testing"], specifier = "==0.0.11" },
     { name = "pyright", specifier = ">=1.1.408" },
     { name = "pytest", specifier = ">=9.0.2" },
     { name = "pytest-cov", specifier = ">=7.0.0" },
     { name = "ruff", specifier = ">=0.15.2" },
+    { name = "typer", specifier = ">=0.21.1" },
 ]
+
+[package.metadata.requires-dev]
+dev = [{ name = "pl-user-io", extras = ["testing"], specifier = "==0.0.11" }]
 
 [[package]]
 name = "pl-mocks-and-fakes"
