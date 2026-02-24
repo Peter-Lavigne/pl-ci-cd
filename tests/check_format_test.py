@@ -1,23 +1,10 @@
-import importlib.metadata
 from pathlib import Path
 
 import pytest
-import ruff  # pyright: ignore[reportMissingTypeStubs]
-from pl_run_program import run_simple_program
 
-from pl_ci_cd.check_format import FormatCheckError, check_format
-from pl_ci_cd.constants import UV_PROGRAM
-from pl_ci_cd.initialize_uv_project import UvProjectPath, initialize_uv_project
-
-
-def set_up_formatter(uv_project_path: UvProjectPath) -> None:
-    """All subsequent calls to `format_code` should use `tmp_path` as the working directory."""
-    ruff_version = importlib.metadata.version(ruff.__name__)
-    run_simple_program(
-        UV_PROGRAM,
-        ["add", "--offline", f"ruff=={ruff_version}"],
-        cwd=uv_project_path,
-    )
+from pl_ci_cd._check_format import FormatCheckError, check_format
+from pl_ci_cd._initialize_uv_project import initialize_uv_project
+from pl_ci_cd.testing._set_up import set_up_formatter
 
 
 def _set_up(tmp_path: Path) -> None:

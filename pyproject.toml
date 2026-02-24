@@ -1,13 +1,11 @@
 [project]
 name = "pl-ci-cd"
-version = "0.0.10"
+version = "0.0.11"
 description = "Continuous integration and continuous deployment of python projects."
 readme = "README.md"
 authors = [{ name = "Peter Lavigne" }]
 requires-python = ">=3.12"
-dependencies = [
-    "pl-run-program>=0.0.25",
-]
+dependencies = ["pl-run-program>=0.0.25", "pl-user-io>=0.0.8", "typer>=0.21.1"]
 license = "Apache-2.0"
 license-files = ["LICENSE"]
 classifiers = ["License :: OSI Approved :: Apache Software License"]
@@ -15,6 +13,9 @@ classifiers = ["License :: OSI Approved :: Apache Software License"]
 [project.urls]
 Homepage = "https://github.com/Peter-Lavigne/pl-ci-cd"
 Repository = "https://github.com/Peter-Lavigne/pl-ci-cd"
+
+[project.scripts]
+check = "pl_ci_cd._check:main"
 
 [build-system]
 requires = ["uv_build>=0.10.4,<0.11.0"]
@@ -55,7 +56,7 @@ extend = "copied/pyproject.toml"
 typeCheckingMode = "strict"
 
 [tool.coverage.run]
-omit = ["tests/*"]
+omit = ["tests/*", "src/pl_ci_cd/testing/*"]
 
 [tool.coverage.report]
 # Ignore all functions mocked in unit tests.
