@@ -3,7 +3,7 @@ from types import NoneType
 
 from pl_run_program import run_program, run_simple_program
 
-from pl_ci_cd.constants import UV_PROGRAM
+from pl_ci_cd._constants import UV_PROGRAM
 
 
 class FormatCheckError(Exception):
