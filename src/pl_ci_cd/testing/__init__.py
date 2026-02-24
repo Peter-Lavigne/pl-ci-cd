@@ -1,4 +1,5 @@
 from ._set_up import (
+    set_up_check,
     set_up_formatter,
     set_up_lint,
     set_up_run_unit_tests_and_coverage,
@@ -6,6 +7,7 @@ from ._set_up import (
 )
 
 __all__ = [
+    "set_up_check",
     "set_up_formatter",
     "set_up_lint",
     "set_up_run_unit_tests_and_coverage",
