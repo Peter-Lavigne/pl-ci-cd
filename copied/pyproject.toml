@@ -1,0 +1,140 @@
+[tool.ruff.lint]
+select = [
+    "AIR",
+    "ERA",
+    "FAST",
+    "YTT",
+    "ANN",
+    "ASYNC",
+    "S",
+    "B",
+    "A",
+    "COM",
+    "C4",
+    "T10",
+    "DJ",
+    "EM",
+    "EXE",
+    "FIX",
+    "FA",
+    "INT",
+    "ISC",
+    "ICN",
+    "LOG",
+    "G",
+    "INP",
+    "PIE",
+    "PYI",
+    "PT",
+    "Q",
+    "RSE",
+    "RET",
+    "SLF",
+    "SIM",
+    "SLOT",
+    "TID",
+    "TD",
+    "TC",
+    "ARG",
+    "PTH",
+    "FLY",
+    "I",
+    "NPY",
+    "PD",
+    "N",
+    "PERF",
+    "W",
+    "E",
+    "W",
+    "D",
+    "F",
+    "PGH",
+    "PL",
+    "PLC",
+    "PLE",
+    "PLR",
+    "PLW",
+    "UP",
+    "FURB",
+    "RUF",
+    "TRY",
+]
+ignore = [
+    # From https://docs.astral.sh/ruff/formatter/#conflicting-lint-rules :
+    # "When using Ruff as a formatter, we recommend avoiding the following lint rules:"
+    "W191",
+    "E111",
+    "E114",
+    "E117",
+    "D206",
+    "D300",
+    "Q000",
+    "Q001",
+    "Q002",
+    "Q003",
+    "COM812",
+    # Line-too-long errors. I'm OK with long lines.
+    "E501",
+    # Inconsistent with D211, which I prefer.
+    # https://docs.astral.sh/ruff/rules/incorrect-blank-line-before-class/
+    "D203",
+    # Most of this repo is CLI tools, so I use `print` and `pprint` a lot.
+    # Therefore, don't flag them.
+    "T20",
+    # D212 and D213 are mutually exclusive. I prefer D213.
+    "D212",
+    # D100-D107 make docstrings mandatory. I think redundant docstrings add noise, so I disable these checks.
+    "D100",
+    "D101",
+    "D102",
+    "D103",
+    "D104",
+    "D105",
+    "D106",
+    "D107",
+    # While a dead code check would be useful, this implementation has too many false positives to be useful.
+    "ERA001",
+    # I don't completely disagree with the reasoning behind this check, but this leans more into API design than code quality.
+    # Since I have a decent amount of code already written with boolean arguments, and it's a difficult change, I'm choosing to ignore this for now.
+    "FBT",
+    # I understand why this check exists, but I don't use performance mode and think that asserts are a concise way to express some constraints. Leaving this disabled.
+    # Note: This is also ignored in test files below, because I definitely don't want this check in pytest tests.
+    "S101",
+    # Someday, when I am old and wise and at peace (or banging my head against timezones, again), I'd like to sit down and fully guard my codebase against timezone issues.
+    # That day is not today.
+    "DTZ",
+    # Code smells, but not necessarily errors.
+    "PLR2004",
+    "PLR0911",
+    "PLR0912",
+    "PLR0913",
+    "PLR0914",
+    "PLR0915",
+    "C90",
+    # Exception-related checks. When I better understand exception handling best practices, I may re-enable some of these.
+    "B017",
+    "BLE",
+    "PT011",
+    "PT017",
+    "PT027",
+    "RUF043",
+    "TRY002",
+    "TRY301",
+    # Logging-related checks. When I better understand logging best practices, I may re-enable this.
+    "G004",
+    "LOG015",
+    # SQL-related check. When I start using SQL more, I may re-enable this.
+    "S608",
+    # All of my failures for this check were false positives.
+    # "Prone to false positives" is listed in the docs for this check.
+    "S603",
+    # I keep typing-only imports because they're used during code generation, not just tests.
+    "TC001",
+    "TC002",
+    "TC003",
+]
+
+[tool.ruff.lint.per-file-ignores]
+# S101 bans assert statements. Since I use them heavily in test files, I disable this check in tests.
+# S105 and S106 ban hard-coding secrets-setting. I often do this using fake values in tests to configure dependencies, so I disable these checks in tests.
+"*_test.py" = ["S101", "S105", "S106"]

@@ -1,0 +1,60 @@
+[project]
+name = "pl-ci-cd"
+version = "0.0.8"
+description = "Continuous integration and continuous deployment of python projects."
+readme = "README.md"
+authors = [{ name = "Peter Lavigne" }]
+requires-python = ">=3.12"
+dependencies = []
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+classifiers = ["License :: OSI Approved :: Apache Software License"]
+
+[project.urls]
+Homepage = "https://github.com/Peter-Lavigne/pl-ci-cd"
+Repository = "https://github.com/Peter-Lavigne/pl-ci-cd"
+
+[build-system]
+requires = ["uv_build>=0.10.4,<0.11.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pyright>=1.1.408",
+    "pytest>=9.0.2",
+    "pytest-cov>=7.0.0",
+    "ruff>=0.15.2",
+    "pl-mocks-and-fakes==0.0.23",
+]
+
+[tool.pytest.ini_options]
+addopts = [
+    "-m",
+    "not integration and not slow and not nondeterministic and not dependent and not expensive and not manual",
+    "-q",
+    "-rN",
+    "-s",
+    "--tb=short",
+]
+markers = [
+    "integration: (deprecated) marks tests as integration",
+
+    "slow: the test runs slowly",
+    "nondeterministic: the test is not guaranteed to pass on every run, even if the code is correct",
+    "dependent: the test may modify the outcome of other tests",
+    "expensive: the test costs money to run",
+    "manual: the test requires human effort to run",
+]
+
+[tool.ruff]
+extend = "copied/pyproject.toml"
+
+[tool.pyright]
+typeCheckingMode = "strict"
+
+[tool.coverage.run]
+omit = ["tests/*"]
+
+[tool.coverage.report]
+# Ignore all functions mocked in unit tests.
+exclude_also = ["@MockInUnitTests"]
