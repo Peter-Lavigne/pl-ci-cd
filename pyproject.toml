@@ -1,11 +1,16 @@
 [project]
 name = "pl-ci-cd"
-version = "0.0.16"
+version = "0.0.17"
 description = "Continuous integration and continuous deployment of python projects."
 readme = "README.md"
 authors = [{ name = "Peter Lavigne" }]
 requires-python = ">=3.12"
-dependencies = ["pl-run-program>=0.0.25", "pl-user-io==0.0.11", "typer>=0.21.1"]
+dependencies = [
+    "pl-run-program>=0.0.25",
+    "pl-user-io==0.0.11",
+    "typer>=0.21.1",
+    "pl-mocks-and-fakes==0.0.26",
+]
 license = "Apache-2.0"
 license-files = ["LICENSE"]
 classifiers = ["License :: OSI Approved :: Apache Software License"]
@@ -23,7 +28,6 @@ build-backend = "uv_build"
 
 [dependency-groups]
 dev = [
-    "pl-mocks-and-fakes==0.0.26",
     "pl-user-io[testing]==0.0.11",
     "pyright>=1.1.408",
     "pytest>=9.0.2",
