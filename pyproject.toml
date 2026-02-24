@@ -1,11 +1,13 @@
 [project]
 name = "pl-ci-cd"
-version = "0.0.9"
+version = "0.0.10"
 description = "Continuous integration and continuous deployment of python projects."
 readme = "README.md"
 authors = [{ name = "Peter Lavigne" }]
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "pl-run-program>=0.0.25",
+]
 license = "Apache-2.0"
 license-files = ["LICENSE"]
 classifiers = ["License :: OSI Approved :: Apache Software License"]
