@@ -1,6 +1,6 @@
 [project]
 name = "pl-ci-cd"
-version = "0.0.8"
+version = "0.0.9"
 description = "Continuous integration and continuous deployment of python projects."
 readme = "README.md"
 authors = [{ name = "Peter Lavigne" }]
