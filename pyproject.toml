@@ -1,6 +1,6 @@
 [project]
 name = "pl-ci-cd"
-version = "0.0.19"
+version = "0.0.20"
 description = "Continuous integration and continuous deployment of python projects."
 readme = "README.md"
 authors = [{ name = "Peter Lavigne" }]
@@ -9,6 +9,7 @@ dependencies = [
     "pl-run-program>=0.0.25",
     "pl-user-io==0.0.11",
     "typer>=0.21.1",
+    "pl-mocks-and-fakes==0.0.26",
     "pyright>=1.1.408",
     "pytest>=9.0.2",
     "pytest-cov>=7.0.0",
@@ -17,9 +18,6 @@ dependencies = [
 license = "Apache-2.0"
 license-files = ["LICENSE"]
 classifiers = ["License :: OSI Approved :: Apache Software License"]
-
-[project.optional-dependencies]
-testing = ["pl-mocks-and-fakes==0.0.26"]
 
 [project.urls]
 Homepage = "https://github.com/Peter-Lavigne/pl-ci-cd"
