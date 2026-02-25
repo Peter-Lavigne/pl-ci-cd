@@ -175,22 +175,21 @@ wheels = [
 
 [[package]]
 name = "pl-ci-cd"
-version = "0.0.20"
+version = "0.0.21"
 source = { editable = "." }
 dependencies = [
     { name = "pl-mocks-and-fakes" },
     { name = "pl-run-program" },
     { name = "pl-user-io" },
-    { name = "pyright" },
-    { name = "pytest" },
-    { name = "pytest-cov" },
-    { name = "ruff" },
     { name = "typer" },
 ]
 
 [package.dev-dependencies]
 dev = [
-    { name = "pl-user-io", extra = ["testing"] },
+    { name = "pyright" },
+    { name = "pytest" },
+    { name = "pytest-cov" },
+    { name = "ruff" },
 ]
 
 [package.metadata]
@@ -198,15 +197,16 @@ requires-dist = [
     { name = "pl-mocks-and-fakes", specifier = "==0.0.26" },
     { name = "pl-run-program", specifier = ">=0.0.25" },
     { name = "pl-user-io", specifier = "==0.0.11" },
-    { name = "pyright", specifier = ">=1.1.408" },
-    { name = "pytest", specifier = ">=9.0.2" },
-    { name = "pytest-cov", specifier = ">=7.0.0" },
-    { name = "ruff", specifier = ">=0.15.2" },
     { name = "typer", specifier = ">=0.21.1" },
 ]
 
 [package.metadata.requires-dev]
-dev = [{ name = "pl-user-io", extras = ["testing"], specifier = "==0.0.11" }]
+dev = [
+    { name = "pyright", specifier = "==1.1.408" },
+    { name = "pytest", specifier = "==9.0.2" },
+    { name = "pytest-cov", specifier = "==7.0.0" },
+    { name = "ruff", specifier = "==0.15.2" },
+]
 
 [[package]]
 name = "pl-mocks-and-fakes"
@@ -239,11 +239,6 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/e7/cf/9f275d552b0eefce9568b10ca2e6b68cdb17669fff93ba060e9aabf1e662/pl_user_io-0.0.11.tar.gz", hash = "sha256:315e3029a3732ed791981ac9ad92a9b5ab1ff40fe4fad25a561babd3e2220d7b", size = 9096, upload-time = "2026-02-24T21:47:57.046Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/0e/79/6f1f12602953d328c2ed261c9c5e2b4f11a7469b94b9d80635ddf796b402/pl_user_io-0.0.11-py3-none-any.whl", hash = "sha256:1aa267fa094bdb5f80be448a2b03205c0f69a80133a8b421b6e04765155b6bcf", size = 14346, upload-time = "2026-02-24T21:47:57.704Z" },
-]
-
-[package.optional-dependencies]
-testing = [
-    { name = "pl-mocks-and-fakes" },
 ]
 
 [[package]]
