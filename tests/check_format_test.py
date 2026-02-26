@@ -1,7 +1,7 @@
 from pathlib import Path
 
 import pytest
-from pl_tiny_clients import initialize_uv_project
+from pl_tiny_clients.initialize_uv_project import initialize_uv_project
 
 from pl_ci_cd._check_format import FormatCheckError, check_format
 from pl_ci_cd.testing._set_up import set_up_formatter
