@@ -166,7 +166,7 @@ wheels = [
 
 [[package]]
 name = "pl-ci-cd"
-version = "0.0.24"
+version = "0.0.25"
 source = { editable = "." }
 dependencies = [
     { name = "pl-mocks-and-fakes" },
@@ -188,7 +188,7 @@ dev = [
 requires-dist = [
     { name = "pl-mocks-and-fakes", specifier = "==0.0.26" },
     { name = "pl-run-program", specifier = "==0.0.25" },
-    { name = "pl-tiny-clients", specifier = ">=0.0.25" },
+    { name = "pl-tiny-clients", specifier = "==0.0.26" },
     { name = "pl-user-io", specifier = "==0.0.11" },
     { name = "typer", specifier = "==0.21.1" },
 ]
@@ -224,16 +224,16 @@ wheels = [
 
 [[package]]
 name = "pl-tiny-clients"
-version = "0.0.25"
+version = "0.0.26"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "pl-mocks-and-fakes" },
     { name = "pl-run-program" },
     { name = "pl-user-io" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/e6/d5/12aec001b1724aae3ab614a2362c0a1a628c7dde7001d7c6a7199a149175/pl_tiny_clients-0.0.25.tar.gz", hash = "sha256:130d307c60904c7c23ece5055badb213adfddae54c59967640c65cf5fa09298d", size = 5591, upload-time = "2026-02-26T12:32:46.009Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/80/1a/8164bddc527565d24090ac91749cadeaf49113d87299bc8ffafc9d1f84c4/pl_tiny_clients-0.0.26.tar.gz", hash = "sha256:c4c021c67c440b30869911ad460184aeb7fcb391ff5145b4c919eadad1c8c443", size = 5617, upload-time = "2026-02-26T12:37:20.444Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/f4/54/7ef5e8636cebb50ebbfc98623ae1bd12fdb8bc9702f79694a9b6196cd29d/pl_tiny_clients-0.0.25-py3-none-any.whl", hash = "sha256:d2cc7b96eb011a5be53d7020081be4d418ee04f86b0cd5a2e82a109e19023e2b", size = 6872, upload-time = "2026-02-26T12:32:44.672Z" },
+    { url = "https://files.pythonhosted.org/packages/f8/79/54caa5e49392b908facd34f2745552dd7ee9c87304ab19b511bd4b4dcb5e/pl_tiny_clients-0.0.26-py3-none-any.whl", hash = "sha256:5a1621919e18d3ada26c864030cfbd38a7731daf75411aa38e854ac237d25138", size = 6915, upload-time = "2026-02-26T12:37:19.366Z" },
 ]
 
 [[package]]
