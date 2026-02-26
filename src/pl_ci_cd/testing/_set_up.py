@@ -4,7 +4,7 @@ from pathlib import Path
 import ruff  # pyright: ignore[reportMissingTypeStubs]
 from pl_mocks_and_fakes import mock_for
 from pl_run_program import run_simple_program
-from pl_tiny_clients._initialize_uv_project import UvProjectPath, initialize_uv_project
+from pl_tiny_clients import UvProjectPath, initialize_uv_project
 
 from pl_ci_cd._check_types import check_types
 from pl_ci_cd._constants import UV_PROGRAM
