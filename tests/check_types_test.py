@@ -1,9 +1,9 @@
 from pathlib import Path
 
 import pytest
+from pl_tiny_clients._initialize_uv_project import initialize_uv_project
 
 from pl_ci_cd._check_types import TypeCheckError, check_types
-from pl_ci_cd._initialize_uv_project import initialize_uv_project
 from pl_ci_cd.testing._set_up import set_up_type_check
 
 from .constants import PYTEST_SLOW_MARKER

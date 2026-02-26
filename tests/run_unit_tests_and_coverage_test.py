@@ -2,8 +2,8 @@ from pathlib import Path
 from textwrap import dedent
 
 import pytest
+from pl_tiny_clients._initialize_uv_project import initialize_uv_project
 
-from pl_ci_cd._initialize_uv_project import initialize_uv_project
 from pl_ci_cd._run_unit_tests_and_coverage import (
     CoverageOrTestsError,
     run_unit_tests_and_coverage,
