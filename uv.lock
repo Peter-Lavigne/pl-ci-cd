@@ -166,11 +166,12 @@ wheels = [
 
 [[package]]
 name = "pl-ci-cd"
-version = "0.0.23"
+version = "0.0.24"
 source = { editable = "." }
 dependencies = [
     { name = "pl-mocks-and-fakes" },
     { name = "pl-run-program" },
+    { name = "pl-tiny-clients" },
     { name = "pl-user-io" },
     { name = "typer" },
 ]
@@ -187,6 +188,7 @@ dev = [
 requires-dist = [
     { name = "pl-mocks-and-fakes", specifier = "==0.0.26" },
     { name = "pl-run-program", specifier = "==0.0.25" },
+    { name = "pl-tiny-clients", specifier = ">=0.0.25" },
     { name = "pl-user-io", specifier = "==0.0.11" },
     { name = "typer", specifier = "==0.21.1" },
 ]
@@ -218,6 +220,20 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/18/30/1950dba38fd84267610e9876c98bbe982ac7968d77da314fdb65553d6e8b/pl_run_program-0.0.25.tar.gz", hash = "sha256:11aa0795ddbdacc027e160f3591360f9430fece6cfb33bfce19e4396efaae9a7", size = 6640, upload-time = "2026-02-24T19:52:17.488Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/40/f1/ab6190bb3c7ba3bddba82302ed38228370cf776c89271565cea354aaabfc/pl_run_program-0.0.25-py3-none-any.whl", hash = "sha256:a7fa1a067ccce24860c1cfb77e55a6cf5f598a9957cdccbc041cedc5d04bad3a", size = 8609, upload-time = "2026-02-24T19:52:16.621Z" },
+]
+
+[[package]]
+name = "pl-tiny-clients"
+version = "0.0.25"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "pl-mocks-and-fakes" },
+    { name = "pl-run-program" },
+    { name = "pl-user-io" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/e6/d5/12aec001b1724aae3ab614a2362c0a1a628c7dde7001d7c6a7199a149175/pl_tiny_clients-0.0.25.tar.gz", hash = "sha256:130d307c60904c7c23ece5055badb213adfddae54c59967640c65cf5fa09298d", size = 5591, upload-time = "2026-02-26T12:32:46.009Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/f4/54/7ef5e8636cebb50ebbfc98623ae1bd12fdb8bc9702f79694a9b6196cd29d/pl_tiny_clients-0.0.25-py3-none-any.whl", hash = "sha256:d2cc7b96eb011a5be53d7020081be4d418ee04f86b0cd5a2e82a109e19023e2b", size = 6872, upload-time = "2026-02-26T12:32:44.672Z" },
 ]
 
 [[package]]
