@@ -166,7 +166,7 @@ wheels = [
 
 [[package]]
 name = "pl-ci-cd"
-version = "0.0.26"
+version = "0.0.27"
 source = { editable = "." }
 dependencies = [
     { name = "pl-mocks-and-fakes" },
@@ -188,7 +188,7 @@ dev = [
 requires-dist = [
     { name = "pl-mocks-and-fakes", specifier = "==0.0.26" },
     { name = "pl-run-program", specifier = "==0.0.25" },
-    { name = "pl-tiny-clients", specifier = "==0.0.27" },
+    { name = "pl-tiny-clients", specifier = "==0.0.28" },
     { name = "pl-user-io", specifier = "==0.0.15" },
     { name = "typer", specifier = "==0.21.1" },
 ]
@@ -224,15 +224,15 @@ wheels = [
 
 [[package]]
 name = "pl-tiny-clients"
-version = "0.0.27"
+version = "0.0.28"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "pl-mocks-and-fakes" },
     { name = "pl-run-program" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/aa/b7/f4247e924fb5895bc6903c88b204160c349e05ea9ec92df4ec183754c2bd/pl_tiny_clients-0.0.27.tar.gz", hash = "sha256:3b6a5e5587bcdd8f8de635b3f57618518e1eff3d50c09a2a271f796773394023", size = 5604, upload-time = "2026-02-26T12:50:47.653Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/1a/f3/eecb8726124098cbe58c9b23cef223eb81ef3fde478d10e2aad957d822d9/pl_tiny_clients-0.0.28.tar.gz", hash = "sha256:450d03b0f912d49e7ad0f038b12ffd5f360e8da8229f35cd4d705ce7822afcb2", size = 5589, upload-time = "2026-02-26T12:56:26.24Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/05/3d/c68cc9fdfa2371d6080c7ffbb599dc5fab1af094dbb1df56c715f1d94154/pl_tiny_clients-0.0.27-py3-none-any.whl", hash = "sha256:9de187c21c46e36cedb97228d01fa1afc9c0425191e44493e075971687f880db", size = 6905, upload-time = "2026-02-26T12:50:48.294Z" },
+    { url = "https://files.pythonhosted.org/packages/ca/d8/5e847ca0b8faa5b3aaef94ff9d3941f2628212c057db47c6126cee14d287/pl_tiny_clients-0.0.28-py3-none-any.whl", hash = "sha256:4d5a17427e0c79287c00d440dde2537d399d1c4879d96288c1adfd02c60d11cf", size = 6821, upload-time = "2026-02-26T12:56:25.296Z" },
 ]
 
 [[package]]
