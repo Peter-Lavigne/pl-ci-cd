@@ -166,7 +166,7 @@ wheels = [
 
 [[package]]
 name = "pl-ci-cd"
-version = "0.0.25"
+version = "0.0.26"
 source = { editable = "." }
 dependencies = [
     { name = "pl-mocks-and-fakes" },
@@ -188,8 +188,8 @@ dev = [
 requires-dist = [
     { name = "pl-mocks-and-fakes", specifier = "==0.0.26" },
     { name = "pl-run-program", specifier = "==0.0.25" },
-    { name = "pl-tiny-clients", specifier = "==0.0.26" },
-    { name = "pl-user-io", specifier = "==0.0.11" },
+    { name = "pl-tiny-clients", specifier = "==0.0.27" },
+    { name = "pl-user-io", specifier = "==0.0.15" },
     { name = "typer", specifier = "==0.21.1" },
 ]
 
@@ -224,28 +224,28 @@ wheels = [
 
 [[package]]
 name = "pl-tiny-clients"
-version = "0.0.26"
+version = "0.0.27"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "pl-mocks-and-fakes" },
     { name = "pl-run-program" },
-    { name = "pl-user-io" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/80/1a/8164bddc527565d24090ac91749cadeaf49113d87299bc8ffafc9d1f84c4/pl_tiny_clients-0.0.26.tar.gz", hash = "sha256:c4c021c67c440b30869911ad460184aeb7fcb391ff5145b4c919eadad1c8c443", size = 5617, upload-time = "2026-02-26T12:37:20.444Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/aa/b7/f4247e924fb5895bc6903c88b204160c349e05ea9ec92df4ec183754c2bd/pl_tiny_clients-0.0.27.tar.gz", hash = "sha256:3b6a5e5587bcdd8f8de635b3f57618518e1eff3d50c09a2a271f796773394023", size = 5604, upload-time = "2026-02-26T12:50:47.653Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/f8/79/54caa5e49392b908facd34f2745552dd7ee9c87304ab19b511bd4b4dcb5e/pl_tiny_clients-0.0.26-py3-none-any.whl", hash = "sha256:5a1621919e18d3ada26c864030cfbd38a7731daf75411aa38e854ac237d25138", size = 6915, upload-time = "2026-02-26T12:37:19.366Z" },
+    { url = "https://files.pythonhosted.org/packages/05/3d/c68cc9fdfa2371d6080c7ffbb599dc5fab1af094dbb1df56c715f1d94154/pl_tiny_clients-0.0.27-py3-none-any.whl", hash = "sha256:9de187c21c46e36cedb97228d01fa1afc9c0425191e44493e075971687f880db", size = 6905, upload-time = "2026-02-26T12:50:48.294Z" },
 ]
 
 [[package]]
 name = "pl-user-io"
-version = "0.0.11"
+version = "0.0.15"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
+    { name = "pl-mocks-and-fakes" },
     { name = "rich" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/e7/cf/9f275d552b0eefce9568b10ca2e6b68cdb17669fff93ba060e9aabf1e662/pl_user_io-0.0.11.tar.gz", hash = "sha256:315e3029a3732ed791981ac9ad92a9b5ab1ff40fe4fad25a561babd3e2220d7b", size = 9096, upload-time = "2026-02-24T21:47:57.046Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/a7/52/553d879080b285783a3fd3f18747839e50aee24bfbb3e466a8416d0e5804/pl_user_io-0.0.15.tar.gz", hash = "sha256:298586de97645fe677ffe0f2a68bde79d301b92a3e1b154eb83f7936818a3620", size = 9955, upload-time = "2026-02-26T12:49:25.596Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/0e/79/6f1f12602953d328c2ed261c9c5e2b4f11a7469b94b9d80635ddf796b402/pl_user_io-0.0.11-py3-none-any.whl", hash = "sha256:1aa267fa094bdb5f80be448a2b03205c0f69a80133a8b421b6e04765155b6bcf", size = 14346, upload-time = "2026-02-24T21:47:57.704Z" },
+    { url = "https://files.pythonhosted.org/packages/c7/a3/8860c4bb7423b8af4e87631b7918ee794313ea260a0f0b969dbc56b79eeb/pl_user_io-0.0.15-py3-none-any.whl", hash = "sha256:1a1269783f6db2f39956adab07dd2ac9b5ac76c7c1fad531163c11e7f1fcf8b0", size = 16069, upload-time = "2026-02-26T12:49:26.551Z" },
 ]
 
 [[package]]
