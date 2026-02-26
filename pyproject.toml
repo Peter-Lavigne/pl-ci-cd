@@ -1,6 +1,6 @@
 [project]
 name = "pl-ci-cd"
-version = "0.0.27"
+version = "0.0.28"
 description = "Continuous integration and continuous deployment of python projects."
 readme = "README.md"
 authors = [{ name = "Peter Lavigne" }]
@@ -10,7 +10,7 @@ dependencies = [
     "pl-user-io==0.0.15",
     "typer==0.21.1",
     "pl-mocks-and-fakes==0.0.26",
-    "pl-tiny-clients==0.0.28",
+    "pl-tiny-clients==0.0.29",
 ]
 license = "Apache-2.0"
 license-files = ["LICENSE"]
