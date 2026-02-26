@@ -241,7 +241,7 @@ wheels = [
 
 [[package]]
 name = "pl-ci-cd"
-version = "0.0.28"
+version = "0.0.29"
 source = { editable = "." }
 dependencies = [
     { name = "pl-mocks-and-fakes" },
@@ -261,10 +261,10 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "pl-mocks-and-fakes", specifier = "==0.0.26" },
-    { name = "pl-run-program", specifier = "==0.0.25" },
-    { name = "pl-tiny-clients", specifier = "==0.0.29" },
-    { name = "pl-user-io", specifier = "==0.0.15" },
+    { name = "pl-mocks-and-fakes", specifier = "==0.0.30" },
+    { name = "pl-run-program", specifier = "==0.0.30" },
+    { name = "pl-tiny-clients", specifier = "==0.0.37" },
+    { name = "pl-user-io", specifier = "==0.0.17" },
     { name = "typer", specifier = "==0.21.1" },
 ]
 
@@ -278,51 +278,54 @@ dev = [
 
 [[package]]
 name = "pl-mocks-and-fakes"
-version = "0.0.26"
+version = "0.0.30"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "pydantic" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/ff/41/5246565a9a1132f58e02f341eb4b05b8945fb18854d7eee4fac2bf32a485/pl_mocks_and_fakes-0.0.26.tar.gz", hash = "sha256:a311e9aacdfc60e98eceeef14e6a777fa34d2abc9661aada3a18133adb19a2a3", size = 8917, upload-time = "2026-02-24T21:44:58.602Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/f5/d2/b9db552b931211c14b960e399270795da2e24c88087678fd34fbfd9e019c/pl_mocks_and_fakes-0.0.30.tar.gz", hash = "sha256:24995e5cbe3edf920fe17d132a3135c2e26814a775eeba2e7111fc356c15017b", size = 8895, upload-time = "2026-02-26T13:28:53.54Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/4f/8b/0abc845e44efeea36d5e46341f896d92217fb14fb7ea9bd48b070dc8b302/pl_mocks_and_fakes-0.0.26-py3-none-any.whl", hash = "sha256:eee2f93ab7af91632a7445314efa762b268e0fe1ea733950e4d6c20a35437fab", size = 11315, upload-time = "2026-02-24T21:44:57.809Z" },
+    { url = "https://files.pythonhosted.org/packages/33/72/79bd73654bb862020a75583af0e73128b4360d382589346c2f5300189e90/pl_mocks_and_fakes-0.0.30-py3-none-any.whl", hash = "sha256:ecc63a30b0bd16caf4114cb341dbd5e579d199edc824dced0abbc61618589894", size = 11316, upload-time = "2026-02-26T13:28:52.544Z" },
 ]
 
 [[package]]
 name = "pl-run-program"
-version = "0.0.25"
+version = "0.0.30"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/18/30/1950dba38fd84267610e9876c98bbe982ac7968d77da314fdb65553d6e8b/pl_run_program-0.0.25.tar.gz", hash = "sha256:11aa0795ddbdacc027e160f3591360f9430fece6cfb33bfce19e4396efaae9a7", size = 6640, upload-time = "2026-02-24T19:52:17.488Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/66/e4/9d5200ed216e4431773f6942d58eb4bf3a902368e08aa6fce76db91a3d3a/pl_run_program-0.0.30.tar.gz", hash = "sha256:5cfdef286a6fe2a672d53b7c87a18e3bdbc2d764f2ed8041d4ce5c062fe8900d", size = 6620, upload-time = "2026-02-26T13:27:48.744Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/40/f1/ab6190bb3c7ba3bddba82302ed38228370cf776c89271565cea354aaabfc/pl_run_program-0.0.25-py3-none-any.whl", hash = "sha256:a7fa1a067ccce24860c1cfb77e55a6cf5f598a9957cdccbc041cedc5d04bad3a", size = 8609, upload-time = "2026-02-24T19:52:16.621Z" },
+    { url = "https://files.pythonhosted.org/packages/a2/b2/345377cb02e0e00e927d6e56b5527e553b867efc8ebeabf4f31c2c0f837d/pl_run_program-0.0.30-py3-none-any.whl", hash = "sha256:38217e8e30d72f58ee32d2611a35f1981b99642c333b474aabf7eed845cc613a", size = 8608, upload-time = "2026-02-26T13:27:47.09Z" },
 ]
 
 [[package]]
 name = "pl-tiny-clients"
-version = "0.0.29"
+version = "0.0.37"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "pl-mocks-and-fakes" },
     { name = "pl-run-program" },
     { name = "pl-user-io" },
+    { name = "pydantic" },
+    { name = "pydantic-settings" },
+    { name = "pytest" },
     { name = "requests" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/38/2f/5b93a104d7fd1914c03ea4dda9281712a0b155b6ec37a2acc7c03e0120d6/pl_tiny_clients-0.0.29.tar.gz", hash = "sha256:536fc8fb45bc09065df77b1e52d6845bd5a8c7fc6ad464cf1d3ef63f66dfb400", size = 6962, upload-time = "2026-02-26T13:11:59.838Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/89/11/cb09936cf6dd74dfa60a1921fed64a0873b0e42f707b9269cb18d5e613f0/pl_tiny_clients-0.0.37.tar.gz", hash = "sha256:2e3200ab600c53e60abf616bc422a23f8b3a277510e3c6680be82e6dc16b345e", size = 25945, upload-time = "2026-02-26T15:37:41.214Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/ab/3b/9afb9a72f48416479267313b1d193006229f44fcdb9131a5e0ed91f5426e/pl_tiny_clients-0.0.29-py3-none-any.whl", hash = "sha256:3a3cdf19a536045778d65a74a9f5436d23c546a114d566d048831400645a1cfa", size = 8455, upload-time = "2026-02-26T13:12:01.313Z" },
+    { url = "https://files.pythonhosted.org/packages/ed/bc/9fc2138ec13fb84fa059cb3faccc647678d45ebe47760434e8f9f86f86e7/pl_tiny_clients-0.0.37-py3-none-any.whl", hash = "sha256:98d99ec5f039adda7dad4c561f62cb5750c7378b32ea678ad65c1be0e7782b2b", size = 54376, upload-time = "2026-02-26T15:37:41.966Z" },
 ]
 
 [[package]]
 name = "pl-user-io"
-version = "0.0.15"
+version = "0.0.17"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "pl-mocks-and-fakes" },
     { name = "rich" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/a7/52/553d879080b285783a3fd3f18747839e50aee24bfbb3e466a8416d0e5804/pl_user_io-0.0.15.tar.gz", hash = "sha256:298586de97645fe677ffe0f2a68bde79d301b92a3e1b154eb83f7936818a3620", size = 9955, upload-time = "2026-02-26T12:49:25.596Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/ca/3c/c4fa7a95cb174d7ddf3f790570799bb0183eb6975771643ea3a1b0639f05/pl_user_io-0.0.17.tar.gz", hash = "sha256:825f754390f533b7d5ad995639f037a23ca7fe914ee3359032a56cc74a377bd0", size = 9951, upload-time = "2026-02-26T13:30:41.521Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/c7/a3/8860c4bb7423b8af4e87631b7918ee794313ea260a0f0b969dbc56b79eeb/pl_user_io-0.0.15-py3-none-any.whl", hash = "sha256:1a1269783f6db2f39956adab07dd2ac9b5ac76c7c1fad531163c11e7f1fcf8b0", size = 16069, upload-time = "2026-02-26T12:49:26.551Z" },
+    { url = "https://files.pythonhosted.org/packages/a6/e8/ed8d72bcbcecaed2c8e10e870c751e4491960a8d4579f665c9b451589731/pl_user_io-0.0.17-py3-none-any.whl", hash = "sha256:0ccc0c7673c0840670c65c142bf0ebcbd2d4007459d9ade10ca08fa063e08fce", size = 16070, upload-time = "2026-02-26T13:30:42.237Z" },
 ]
 
 [[package]]
@@ -421,6 +424,20 @@ wheels = [
 ]
 
 [[package]]
+name = "pydantic-settings"
+version = "2.13.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "pydantic" },
+    { name = "python-dotenv" },
+    { name = "typing-inspection" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/52/6d/fffca34caecc4a3f97bda81b2098da5e8ab7efc9a66e819074a11955d87e/pydantic_settings-2.13.1.tar.gz", hash = "sha256:b4c11847b15237fb0171e1462bf540e294affb9b86db4d9aa5c01730bdbe4025", size = 223826, upload-time = "2026-02-19T13:45:08.055Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/00/4b/ccc026168948fec4f7555b9164c724cf4125eac006e176541483d2c959be/pydantic_settings-2.13.1-py3-none-any.whl", hash = "sha256:d56fd801823dbeae7f0975e1f8c8e25c258eb75d278ea7abb5d9cebb01b56237", size = 58929, upload-time = "2026-02-19T13:45:06.034Z" },
+]
+
+[[package]]
 name = "pygments"
 version = "2.19.2"
 source = { registry = "https://pypi.org/simple" }
@@ -470,6 +487,15 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/5e/f7/c933acc76f5208b3b00089573cf6a2bc26dc80a8aece8f52bb7d6b1855ca/pytest_cov-7.0.0.tar.gz", hash = "sha256:33c97eda2e049a0c5298e91f519302a1334c26ac65c1a483d6206fd458361af1", size = 54328, upload-time = "2025-09-09T10:57:02.113Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/ee/49/1377b49de7d0c1ce41292161ea0f721913fa8722c19fb9c1e3aa0367eecb/pytest_cov-7.0.0-py3-none-any.whl", hash = "sha256:3b8e9558b16cc1479da72058bdecf8073661c7f57f7d3c5f22a1c23507f2d861", size = 22424, upload-time = "2025-09-09T10:57:00.695Z" },
+]
+
+[[package]]
+name = "python-dotenv"
+version = "1.2.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/f0/26/19cadc79a718c5edbec86fd4919a6b6d3f681039a2f6d66d14be94e75fb9/python_dotenv-1.2.1.tar.gz", hash = "sha256:42667e897e16ab0d66954af0e60a9caa94f0fd4ecf3aaf6d2d260eec1aa36ad6", size = 44221, upload-time = "2025-10-26T15:12:10.434Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/14/1b/a298b06749107c305e1fe0f814c6c74aea7b2f1e10989cb30f544a1b3253/python_dotenv-1.2.1-py3-none-any.whl", hash = "sha256:b81ee9561e9ca4004139c6cbba3a238c32b03e4894671e181b671e8cb8425d61", size = 21230, upload-time = "2025-10-26T15:12:09.109Z" },
 ]
 
 [[package]]
