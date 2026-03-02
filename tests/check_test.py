@@ -118,6 +118,14 @@ def test_checks_linting__fail(tmp_path: Path) -> None:
     assert_displayed("✗ Linter")
 
 
+def test_passes_project_directory_to_type_checks(tmp_path: Path) -> None:
+    _set_up(tmp_path)
+
+    check(fix=True, directory=tmp_path)
+
+    mock_for(check_types).assert_called_once_with(tmp_path)
+
+
 def test_checks_types__pass(tmp_path: Path) -> None:
     _set_up(tmp_path)
     mock_for(check_types).side_effect = None
@@ -138,6 +146,14 @@ def test_checks_types__fail(tmp_path: Path) -> None:
 
     assert_displayed("✗ Type checks")
     assert "Type check failed" in str(exc_info.value)
+
+
+def test_passes_project_directory_to_pytest(tmp_path: Path) -> None:
+    _set_up(tmp_path)
+
+    check(fix=True, directory=tmp_path)
+
+    mock_for(run_unit_tests_and_coverage).assert_called_once_with(tmp_path)
 
 
 def test_runs_pytest__pass(tmp_path: Path) -> None:
