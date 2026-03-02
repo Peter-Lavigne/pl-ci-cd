@@ -1,6 +1,6 @@
 [project]
 name = "pl-ci-cd"
-version = "0.0.31"
+version = "0.0.32"
 description = "Continuous integration and continuous deployment of python projects."
 readme = "README.md"
 authors = [{ name = "Peter Lavigne" }]
@@ -70,6 +70,4 @@ exclude_also = ["@MockInUnitTests"]
 
 [tool.mutmut]
 mutate_only_covered_lines = true
-do_not_mutate = [
-    "src/pl_ci_cd/testing/*",
-]
+do_not_mutate = ["src/pl_ci_cd/testing/*"]
