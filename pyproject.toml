@@ -1,6 +1,6 @@
 [project]
 name = "pl-ci-cd"
-version = "0.0.30"
+version = "0.0.31"
 description = "Continuous integration and continuous deployment of python projects."
 readme = "README.md"
 authors = [{ name = "Peter Lavigne" }]
@@ -29,6 +29,7 @@ build-backend = "uv_build"
 
 [dependency-groups]
 dev = [
+    "mutmut==3.4.0",
     "pyright==1.1.408",
     "pytest==9.0.2",
     "pytest-cov==7.0.0",
@@ -66,3 +67,9 @@ omit = ["tests/*", "src/pl_ci_cd/testing/*"]
 [tool.coverage.report]
 # Ignore all functions mocked in unit tests.
 exclude_also = ["@MockInUnitTests"]
+
+[tool.mutmut]
+mutate_only_covered_lines = true
+do_not_mutate = [
+    "src/pl_ci_cd/testing/*",
+]
