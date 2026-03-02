@@ -91,3 +91,16 @@ def test_lint_raises_on_ruff_exit_code_2(tmp_path: Path) -> None:
     assert "linting failed with an unexpected error" in str(exc_info.value)
     assert "stdout" in str(exc_info.value)
     assert "stderr" in str(exc_info.value)
+
+
+def test_lint_returns_full_formatted_output(tmp_path: Path) -> None:
+    _set_up(tmp_path)
+    valid_code = "x = 1 + 2\n"
+    (tmp_path / "test.py").write_text(valid_code)
+
+    result = lint(tmp_path)
+
+    assert result.output == dedent("""\
+        stdout: All checks passed!
+
+        stderr: """)
