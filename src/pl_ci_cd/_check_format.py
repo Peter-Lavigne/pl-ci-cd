@@ -11,10 +11,9 @@ class FormatCheckError(Exception):
 
 
 def check_format(directory: Path, fix: bool) -> NoneType:
-    args = ["run", "ruff", "format"]
+    args = ["--directory", str(directory), "run", "ruff", "format"]
     if not fix:
         args.append("--check")
-    args.append(str(directory))
     if fix:
         run_simple_program(UV_PROGRAM, args)
         return

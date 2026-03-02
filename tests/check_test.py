@@ -86,6 +86,16 @@ def test_checks_format_when_fix_false__fail(tmp_path: Path) -> None:
     assert "Format check failed" in str(exc_info.value)
 
 
+def test_does_not_fix_by_default(tmp_path: Path) -> None:
+    _set_up(tmp_path)
+    (tmp_path / "test.py").write_text("x=1+2\n")
+
+    with pytest.raises(FormatCheckError):
+        check(directory=tmp_path)
+
+    assert (tmp_path / "test.py").read_text() == "x=1+2\n"
+
+
 def test_checks_linting__pass(tmp_path: Path) -> None:
     _set_up(tmp_path)
     (tmp_path / "test.py").write_text("print(1 + 2)\n")

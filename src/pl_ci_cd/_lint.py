@@ -17,10 +17,9 @@ class LintError(Exception):
 
 
 def lint(directory: Path, fix: bool = False) -> LintResult:
-    args = ["run", "ruff", "check"]
+    args = ["--directory", str(directory), "run", "ruff", "check"]
     if fix:
         args.append("--fix")
-    args.append(str(directory))
     result = run_program(UV_PROGRAM, args)
 
     # From https://docs.astral.sh/ruff/linter/#exit-codes:
