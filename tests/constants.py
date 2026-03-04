@@ -1,7 +1,9 @@
 import pytest
 
 PYTEST_SLOW_MARKER = pytest.mark.slow
+PYTEST_INTEGRATION_MARKER = pytest.mark.integration
 
 PYTEST_INTEGRATION_TEST_MARKERS = [
     PYTEST_SLOW_MARKER,
+    PYTEST_INTEGRATION_MARKER,
 ]
