@@ -1,6 +1,6 @@
 [project]
 name = "pl-ci-cd"
-version = "0.0.35"
+version = "0.0.36"
 description = "Continuous integration and continuous deployment of python projects."
 readme = "README.md"
 authors = [{ name = "Peter Lavigne" }]
@@ -22,6 +22,7 @@ Repository = "https://github.com/Peter-Lavigne/pl-ci-cd"
 
 [project.scripts]
 check = "pl_ci_cd._check:main"
+commit = "pl_ci_cd.commit:main"
 
 [build-system]
 requires = ["uv_build>=0.10.4,<0.11.0"]
