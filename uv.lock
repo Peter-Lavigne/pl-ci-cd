@@ -365,10 +365,10 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "pl-mocks-and-fakes", specifier = "==0.0.30" },
-    { name = "pl-run-program", specifier = "==0.0.30" },
-    { name = "pl-tiny-clients", specifier = "==0.0.42" },
-    { name = "pl-user-io", specifier = "==0.0.18" },
+    { name = "pl-mocks-and-fakes", specifier = ">=0.0.30" },
+    { name = "pl-run-program", specifier = ">=0.0.30" },
+    { name = "pl-tiny-clients", specifier = ">=0.0.42" },
+    { name = "pl-user-io", specifier = ">=0.0.18" },
     { name = "typer", specifier = "==0.21.1" },
 ]
 

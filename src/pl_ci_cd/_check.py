@@ -1,5 +1,6 @@
 import contextlib
 from pathlib import Path
+from typing import Annotated
 
 import typer
 from pl_user_io.loading_spinner import loading_spinner
@@ -10,7 +11,26 @@ from pl_ci_cd._lint import lint
 from pl_ci_cd._run_unit_tests_and_coverage import run_unit_tests_and_coverage
 
 
-def check(directory: Path | None = None, fix: bool = False) -> None:
+def check(
+    directory: Path | None = None,
+    fix: Annotated[
+        bool,
+        typer.Option(
+            help="Auto-fix issues where possible. Replaces `ruff format --check` with `ruff format` and adds `--fix` to `ruff check`.",
+        ),
+    ] = False,
+) -> None:
+    r"""
+    Run all CI checks: format, lint, type check, and tests with coverage.
+
+    The following commands are run in order (<dir> is the current working directory):
+
+    \b
+    uv --directory <dir> run ruff format --check
+    uv --directory <dir> run ruff check
+    uv run pyright <dir>
+    uv run pytest --cov --cov-fail-under=100 -q <dir>
+    """
     if directory is None:
         directory = Path.cwd()
 

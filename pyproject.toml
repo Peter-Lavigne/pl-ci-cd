@@ -6,11 +6,11 @@ readme = "README.md"
 authors = [{ name = "Peter Lavigne" }]
 requires-python = ">=3.12"
 dependencies = [
-    "pl-run-program==0.0.30",
-    "pl-user-io==0.0.18",
+    "pl-run-program>=0.0.30",
+    "pl-user-io>=0.0.18",
     "typer==0.21.1",
-    "pl-mocks-and-fakes==0.0.30",
-    "pl-tiny-clients==0.0.42",
+    "pl-mocks-and-fakes>=0.0.30",
+    "pl-tiny-clients>=0.0.42",
 ]
 license = "Apache-2.0"
 license-files = ["LICENSE"]
