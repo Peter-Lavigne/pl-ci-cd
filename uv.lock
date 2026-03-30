@@ -344,7 +344,7 @@ wheels = [
 
 [[package]]
 name = "pl-ci-cd"
-version = "0.0.38"
+version = "0.0.39"
 source = { editable = "." }
 dependencies = [
     { name = "pl-mocks-and-fakes" },

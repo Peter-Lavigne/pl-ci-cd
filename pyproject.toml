@@ -1,6 +1,6 @@
 [project]
 name = "pl-ci-cd"
-version = "0.0.38"
+version = "0.0.39"
 description = "Continuous integration and continuous deployment of python projects."
 readme = "README.md"
 authors = [{ name = "Peter Lavigne" }]
@@ -58,6 +58,11 @@ markers = [
 
 [tool.ruff]
 extend = "copied/pyproject.toml"
+
+[tool.ruff.lint.per-file-ignores]
+# D301 requires r-strings for docstrings with backslashes, but \b is needed as a
+# literal backspace for Click's paragraph formatting in --help output.
+"src/pl_ci_cd/_check.py" = ["D301"]
 
 [tool.pyright]
 typeCheckingMode = "strict"

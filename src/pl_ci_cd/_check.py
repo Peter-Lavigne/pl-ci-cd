@@ -20,7 +20,7 @@ def check(
         ),
     ] = False,
 ) -> None:
-    r"""
+    """
     Run all CI checks: format, lint, type check, and tests with coverage.
 
     The following commands are run in order (<dir> is the current working directory):
