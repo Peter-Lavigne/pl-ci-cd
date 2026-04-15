@@ -6,6 +6,7 @@ from pl_ci_cd._run_unit_tests_and_coverage import (
     CoverageOrTestsError,
     run_unit_tests_and_coverage,
 )
+from pl_ci_cd.merge import merge
 
 __all__ = [
     "CoverageOrTestsError",
@@ -16,5 +17,6 @@ __all__ = [
     "check_format",
     "check_types",
     "lint",
+    "merge",
     "run_unit_tests_and_coverage",
 ]

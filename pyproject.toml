@@ -23,6 +23,7 @@ Repository = "https://github.com/Peter-Lavigne/pl-ci-cd"
 [project.scripts]
 check = "pl_ci_cd._check:main"
 commit = "pl_ci_cd.commit:main"
+merge = "pl_ci_cd.merge:main"
 
 [build-system]
 requires = ["uv_build>=0.10.4,<0.11.0"]
@@ -68,7 +69,11 @@ extend = "copied/pyproject.toml"
 typeCheckingMode = "strict"
 
 [tool.coverage.run]
-omit = ["tests/*", "src/pl_ci_cd/testing/*"]
+omit = [
+    "tests/*",
+    "src/pl_ci_cd/testing/*",
+    "src/pl_ci_cd/publish_to_pypi.py",
+]
 
 [tool.coverage.report]
 # Ignore all functions mocked in unit tests.
