@@ -19,7 +19,9 @@ REBASE_CONFLICT_PROMPT = dedent("""\
     following message to the agent working in that worktree:
 
     ----
-    There are conflict markers in one or more files in this worktree.
+    I just rebased this branch onto {main_branch} as part
+    of a CD process, and there were conflicts.
+    Now, there are conflict markers in one or more files in this worktree.
     Resolve them in place by editing the affected files only. Do NOT run
     any git commands — leave staging, rebasing, and committing to the
     outer process. When you are done, or if you determine the conflict
@@ -42,7 +44,7 @@ def merge(worktree: Path, repo_dir: Path, main_branch: str, ci_script: Path) -> 
     try:
         _git(worktree, "rebase", main_branch)
     except SimpleProgramError:
-        _handle_rebase_conflict(worktree)
+        _handle_rebase_conflict(worktree, main_branch)
 
     display(f"Running CI ({ci_script})...")
     _run_ci(ci_script, worktree)
@@ -53,8 +55,10 @@ def merge(worktree: Path, repo_dir: Path, main_branch: str, ci_script: Path) -> 
     display("Done.")
 
 
-def _handle_rebase_conflict(worktree: Path) -> None:
-    fix_with_agent(REBASE_CONFLICT_PROMPT.format(worktree=worktree))
+def _handle_rebase_conflict(worktree: Path, main_branch: str) -> None:
+    fix_with_agent(
+        REBASE_CONFLICT_PROMPT.format(worktree=worktree, main_branch=main_branch)
+    )
 
     try:
         _git(worktree, "diff", "--check")
