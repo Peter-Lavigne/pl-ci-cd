@@ -45,6 +45,12 @@ def merge(worktree: Path, repo_dir: Path, main_branch: str, ci_script: Path) -> 
         _git(worktree, "rebase", main_branch)
     except SimpleProgramError:
         _handle_rebase_conflict(worktree, main_branch)
+        _undo_auto_commit(worktree)
+        msg = (
+            "Rebase conflict was resolved. Review the unstaged changes in "
+            f"{worktree} and re-run when satisfied."
+        )
+        raise RuntimeError(msg) from None
 
     display(f"Running CI ({ci_script})...")
     _run_ci(ci_script, worktree)

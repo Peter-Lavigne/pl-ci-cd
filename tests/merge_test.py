@@ -118,10 +118,11 @@ def test_ci_failure_unstages_changes_without_modifying_main(
     assert "feature.py" in _git(merge_fixture.worktree_dir, "status", "--porcelain")
 
 
-def test_rebase_conflict_resolved_by_agent_completes_merge(
+def test_rebase_conflict_resolved_pauses_for_review(
     merge_fixture: MergeFixture,
 ) -> None:
     _create_rebase_conflict(merge_fixture.repo_dir, merge_fixture.worktree_dir)
+    main_head = _git(merge_fixture.repo_dir, "rev-parse", "HEAD")
 
     def _agent_keeps_both(_prompt: str) -> None:
         (merge_fixture.worktree_dir / "items.py").write_text(
@@ -130,14 +131,14 @@ def test_rebase_conflict_resolved_by_agent_completes_merge(
 
     _stub_agent(_agent_keeps_both)
 
-    merge_fixture.run_merge()
+    with pytest.raises(RuntimeError, match="[Rr]eview"):
+        merge_fixture.run_merge()
 
-    assert (merge_fixture.repo_dir / "items.py").read_text() == (
+    assert _git(merge_fixture.repo_dir, "rev-parse", "HEAD") == main_head
+    assert (merge_fixture.worktree_dir / "items.py").read_text() == (
         'items = ["a", "b", "c"]\n'
     )
-    assert _git(merge_fixture.repo_dir, "rev-parse", "HEAD") == _git(
-        merge_fixture.worktree_dir, "rev-parse", "HEAD"
-    )
+    assert "items.py" in _git(merge_fixture.worktree_dir, "status", "--porcelain")
 
 
 def test_irreconcilable_conflict_aborts_without_modifying_main(
