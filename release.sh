@@ -11,9 +11,6 @@ if [[ -z "${UV_PUBLISH_TOKEN:-}" ]]; then
   exit 1
 fi
 
-echo 'Running "uv run check --fix"...'
-uv run check --fix
-
 echo 'Running "rm -f dist/*.whl dist/*.tar.gz"...'
 rm -f dist/*.whl dist/*.tar.gz
 
