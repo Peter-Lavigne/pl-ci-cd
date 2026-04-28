@@ -36,6 +36,10 @@ def fix_with_agent(prompt: str) -> None:
 
 
 def merge(worktree: Path, repo_dir: Path, main_branch: str, ci_script: Path) -> None:
+    if _git(repo_dir, "status", "--porcelain").strip():
+        msg = f"Repository at {repo_dir} is dirty. Commit or stash changes first."
+        raise RuntimeError(msg)
+
     display("Committing worktree changes...")
     _git(worktree, "add", "-A")
     _git(worktree, "commit", "-m", "Commit")

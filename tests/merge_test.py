@@ -91,6 +91,14 @@ def test_merges_worktree_changes_into_main(merge_fixture: MergeFixture) -> None:
     )
 
 
+def test_errors_if_repo_dir_is_dirty(merge_fixture: MergeFixture) -> None:
+    (merge_fixture.repo_dir / "dirty.txt").write_text("uncommitted\n")
+    (merge_fixture.worktree_dir / "feature.py").write_text('print("hello")\n')
+
+    with pytest.raises(RuntimeError, match="Commit or stash changes first"):
+        merge_fixture.run_merge()
+
+
 def test_displays_progress_for_each_phase(merge_fixture: MergeFixture) -> None:
     (merge_fixture.worktree_dir / "feature.py").write_text('print("hello")\n')
 
