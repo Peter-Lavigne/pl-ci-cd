@@ -38,7 +38,7 @@ def fix_with_agent(prompt: str) -> None:
     task(prompt)
 
 
-def ship(worktree: Path, repo_dir: Path | None = None) -> None:
+def ship(worktree: Path | None = None, repo_dir: Path | None = None) -> None:
     if repo_dir is None:
         repo_dir = Path.cwd()  # pragma: no cover
     test_script = repo_dir / ".ship" / "test"
@@ -50,7 +50,10 @@ def ship(worktree: Path, repo_dir: Path | None = None) -> None:
         msg = f"Missing {deploy_script}"
         raise RuntimeError(msg)
 
-    _merge(worktree, repo_dir, test_script)
+    if worktree is not None:
+        _merge(worktree, repo_dir, test_script)
+    else:
+        _commit_and_test(repo_dir, test_script)
 
     display("Pushing...")
     git_push()
@@ -59,6 +62,19 @@ def ship(worktree: Path, repo_dir: Path | None = None) -> None:
     _run_deploy(deploy_script, repo_dir)
 
     display("Shipped.")
+
+
+def _commit_and_test(repo_dir: Path, ci_script: Path) -> None:
+    if not _git(repo_dir, "status", "--porcelain").strip():
+        msg = f"Repository at {repo_dir} has no changes to ship."
+        raise RuntimeError(msg)
+
+    display("Committing changes...")
+    _git(repo_dir, "add", "-A")
+    _git(repo_dir, "commit", "-m", "Commit")
+
+    display(f"Running CI ({ci_script})...")
+    _run_ci(ci_script, repo_dir)
 
 
 def _merge(worktree: Path, repo_dir: Path, ci_script: Path) -> None:
