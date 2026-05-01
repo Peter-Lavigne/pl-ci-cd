@@ -12,6 +12,7 @@ from pl_ci_cd._constants import GIT_PROGRAM
 from pl_ci_cd.ship import fix_with_agent, ship
 
 MAIN = "main"
+TOUCH = "/usr/bin/touch"
 
 
 def _git(cwd: Path, *args: str) -> str:
@@ -127,7 +128,9 @@ def test_worktree_merges_changes_into_main(worktree_fixture: WorktreeFixture) ->
     )
 
 
-def test_worktree_errors_if_repo_dir_is_dirty(worktree_fixture: WorktreeFixture) -> None:
+def test_worktree_errors_if_repo_dir_is_dirty(
+    worktree_fixture: WorktreeFixture,
+) -> None:
     (worktree_fixture.repo_dir / "dirty.txt").write_text("uncommitted\n")
     (worktree_fixture.worktree_dir / "feature.py").write_text('print("hello")\n')
 
@@ -135,7 +138,9 @@ def test_worktree_errors_if_repo_dir_is_dirty(worktree_fixture: WorktreeFixture)
         worktree_fixture.run_ship()
 
 
-def test_worktree_displays_progress_for_each_phase(worktree_fixture: WorktreeFixture) -> None:
+def test_worktree_displays_progress_for_each_phase(
+    worktree_fixture: WorktreeFixture,
+) -> None:
     (worktree_fixture.worktree_dir / "feature.py").write_text('print("hello")\n')
 
     worktree_fixture.run_ship()
@@ -156,7 +161,7 @@ def test_worktree_ci_failure_unstages_changes_without_modifying_main(
 ) -> None:
     marker = tmp_path / "deployed.txt"
     _write_script(worktree_fixture.repo_dir / ".ship" / "test", "exit 1")
-    _write_script(worktree_fixture.deploy_script, f"touch {marker}")
+    _write_script(worktree_fixture.deploy_script, f"{TOUCH} {marker}")
     _git(worktree_fixture.repo_dir, "add", "-A")
     _git(worktree_fixture.repo_dir, "commit", "-m", "set scripts")
     main_head = _git(worktree_fixture.repo_dir, "rev-parse", "HEAD")
@@ -209,7 +214,9 @@ def test_worktree_irreconcilable_conflict_aborts_without_modifying_main(
         worktree_fixture.run_ship()
 
     assert _git(worktree_fixture.repo_dir, "rev-parse", "HEAD") == main_head
-    assert (worktree_fixture.repo_dir / "items.py").read_text() == ('items = ["a", "b"]\n')
+    assert (worktree_fixture.repo_dir / "items.py").read_text() == (
+        'items = ["a", "b"]\n'
+    )
     assert "items.py" in _git(worktree_fixture.worktree_dir, "status", "--porcelain")
 
 
@@ -223,7 +230,7 @@ def test_pushes_after_ship(worktree_fixture: WorktreeFixture) -> None:
 
 def test_runs_deploy_script(tmp_path: Path, worktree_fixture: WorktreeFixture) -> None:
     marker = tmp_path / "deployed.txt"
-    _write_script(worktree_fixture.deploy_script, f"touch {marker}")
+    _write_script(worktree_fixture.deploy_script, f"{TOUCH} {marker}")
     _git(worktree_fixture.repo_dir, "add", "-A")
     _git(worktree_fixture.repo_dir, "commit", "-m", "set deploy script")
     (worktree_fixture.worktree_dir / "feature.py").write_text('print("hello")\n')
@@ -263,7 +270,7 @@ def test_ci_failure_undoes_commit_on_main(
 ) -> None:
     marker = tmp_path / "deployed.txt"
     _write_script(main_fixture.repo_dir / ".ship" / "test", "exit 1")
-    _write_script(main_fixture.deploy_script, f"touch {marker}")
+    _write_script(main_fixture.deploy_script, f"{TOUCH} {marker}")
     _git(main_fixture.repo_dir, "add", "-A")
     _git(main_fixture.repo_dir, "commit", "-m", "set scripts")
     main_head = _git(main_fixture.repo_dir, "rev-parse", "HEAD")
@@ -278,6 +285,48 @@ def test_ci_failure_undoes_commit_on_main(
     assert not marker.exists()
 
 
+def test_ci_auto_fixes_are_included_in_commit_on_main(
+    main_fixture: MainFixture,
+) -> None:
+    _write_script(main_fixture.repo_dir / ".ship" / "test", "ruff format .")
+    _git(main_fixture.repo_dir, "add", "-A")
+    _git(main_fixture.repo_dir, "commit", "-m", "set test script")
+    head_before = _git(main_fixture.repo_dir, "rev-parse", "HEAD").strip()
+    (main_fixture.repo_dir / "messy.py").write_text("x=1+2\n")
+
+    main_fixture.run_ship()
+
+    assert (main_fixture.repo_dir / "messy.py").read_text() == "x = 1 + 2\n"
+    assert _git(main_fixture.repo_dir, "status", "--porcelain") == ""
+    commit_count = int(
+        _git(
+            main_fixture.repo_dir, "rev-list", "--count", f"{head_before}..HEAD"
+        ).strip()
+    )
+    assert commit_count == 1
+
+
+def test_ci_auto_fixes_are_included_in_commit_on_worktree(
+    worktree_fixture: WorktreeFixture,
+) -> None:
+    _write_script(worktree_fixture.repo_dir / ".ship" / "test", "ruff format .")
+    _git(worktree_fixture.repo_dir, "add", "-A")
+    _git(worktree_fixture.repo_dir, "commit", "-m", "set test script")
+    head_before = _git(worktree_fixture.repo_dir, "rev-parse", "HEAD").strip()
+    (worktree_fixture.worktree_dir / "messy.py").write_text("x=1+2\n")
+
+    worktree_fixture.run_ship()
+
+    assert (worktree_fixture.repo_dir / "messy.py").read_text() == "x = 1 + 2\n"
+    assert _git(worktree_fixture.repo_dir, "status", "--porcelain") == ""
+    commit_count = int(
+        _git(
+            worktree_fixture.repo_dir, "rev-list", "--count", f"{head_before}..HEAD"
+        ).strip()
+    )
+    assert commit_count == 1
+
+
 def test_displays_progress_without_rebase_or_merge(
     main_fixture: MainFixture,
 ) -> None:
@@ -286,8 +335,8 @@ def test_displays_progress_without_rebase_or_merge(
     main_fixture.run_ship()
 
     assert_displayed_in_order(
-        "Committing changes",
         "Running CI",
+        "Committing changes",
         "Pushing",
         "Deploying",
         "Shipped.",

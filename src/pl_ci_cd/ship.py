@@ -69,12 +69,12 @@ def _commit_and_test(repo_dir: Path, ci_script: Path) -> None:
         msg = f"Repository at {repo_dir} has no changes to ship."
         raise RuntimeError(msg)
 
+    display(f"Running CI ({ci_script})...")
+    _run_ci(ci_script, repo_dir)
+
     display("Committing changes...")
     _git(repo_dir, "add", "-A")
     _git(repo_dir, "commit", "-m", "Commit")
-
-    display(f"Running CI ({ci_script})...")
-    _run_ci(ci_script, repo_dir)
 
 
 def _merge(worktree: Path, repo_dir: Path, ci_script: Path) -> None:
@@ -99,7 +99,12 @@ def _merge(worktree: Path, repo_dir: Path, ci_script: Path) -> None:
         raise RuntimeError(msg) from None
 
     display(f"Running CI ({ci_script})...")
-    _run_ci(ci_script, worktree)
+    try:
+        _run_ci(ci_script, worktree)
+    except RuntimeError:
+        _undo_auto_commit(worktree)
+        raise
+    _amend_auto_fixes(worktree)
 
     branch = _git(worktree, "branch", "--show-current").strip()
     display(f"Fast-forward merging {branch} into {MAIN_BRANCH}...")
@@ -131,7 +136,6 @@ def _run_ci(ci_script: Path, worktree: Path) -> None:
         [str(ci_script)], cwd=worktree, env=dict(os.environ), check=False
     )
     if result.returncode != 0:
-        _undo_auto_commit(worktree)
         msg = f"CI failed with return code {result.returncode}."
         raise RuntimeError(msg)
 
@@ -143,6 +147,12 @@ def _run_deploy(deploy_script: Path, cwd: Path) -> None:
     if result.returncode != 0:
         msg = f"Deploy failed with return code {result.returncode}."
         raise RuntimeError(msg)
+
+
+def _amend_auto_fixes(worktree: Path) -> None:
+    if _git(worktree, "status", "--porcelain").strip():
+        _git(worktree, "add", "-A")
+        _git(worktree, "commit", "--amend", "--no-edit")
 
 
 def _undo_auto_commit(worktree: Path) -> None:
