@@ -1,6 +1,6 @@
 [project]
 name = "verploy"
-version = "0.0.30"
+version = "0.0.31"
 description = "The fastest CI/CD system for agentic engineering."
 readme = "README.md"
 authors = [{ name = "Peter Lavigne" }]
