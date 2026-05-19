@@ -1,0 +1,79 @@
+[project]
+name = "verploy"
+version = "0.0.28"
+description = "The fastest CI/CD system for agentic engineering."
+readme = "README.md"
+authors = [{ name = "Peter Lavigne" }]
+requires-python = ">=3.12"
+dependencies = [
+    "pl-run-program>=0.0.30",
+    "pl-user-io>=0.0.18",
+    "typer==0.21.1",
+    "pl-mocks-and-fakes>=0.0.30",
+    "pl-tiny-clients>=0.0.42",
+]
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+classifiers = [
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+]
+
+[project.urls]
+Homepage = "https://github.com/Peter-Lavigne/verploy"
+Repository = "https://github.com/Peter-Lavigne/verploy"
+
+[project.scripts]
+verploy = "verploy.verploy:main"
+verploy-hook = "verploy.verploy:hook"
+
+[build-system]
+requires = ["uv_build>=0.10.4,<0.11.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "mutmut==3.4.0",
+    "pyright>=1.1.409",
+    "pytest>=9.0.2",
+    "pytest-cov>=7.0.0",
+    "ruff>=0.15.2",
+]
+
+[tool.pytest.ini_options]
+addopts = [
+    "-m",
+    "not integration and not slow and not nondeterministic and not dependent and not expensive and not manual",
+    "-q",
+    "-rN",
+    "-s",
+    "--tb=short",
+]
+markers = [
+    "integration: (deprecated) marks tests as integration",
+
+    "slow: the test runs slowly",
+    "nondeterministic: the test is not guaranteed to pass on every run, even if the code is correct",
+    "dependent: the test may modify the outcome of other tests",
+    "expensive: the test costs money to run",
+    "manual: the test requires human effort to run",
+]
+
+
+[tool.pyright]
+typeCheckingMode = "strict"
+
+[tool.coverage.run]
+omit = [
+    "tests/*",
+    "src/verploy/publish_to_pypi.py",
+]
+
+[tool.coverage.report]
+# Ignore all functions mocked in unit tests.
+exclude_also = ["@MockInUnitTests"]
+
+[tool.mutmut]
+mutate_only_covered_lines = true

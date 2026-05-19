@@ -1,0 +1,3 @@
+#!/bin/sh
+read -p "Review the code. Is it acceptable? (y/n) " answer
+[ "$answer" = "y" ]

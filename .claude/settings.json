@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uv run verploy-hook",
+            "timeout": 600
+          }
+        ]
+      }
+    ]
+  }
+}
