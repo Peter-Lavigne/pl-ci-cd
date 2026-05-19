@@ -20,4 +20,8 @@ uv build --no-sources -o dist
 echo 'Running "uv publish dist/*"...'
 uv publish dist/*
 
+echo 'Running "git add -A && git commit"...'
+git add -A
+git commit -m "Bump version to $(uv version --short)"
+
 echo 'Release complete.'
