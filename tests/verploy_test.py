@@ -17,10 +17,10 @@ from pl_user_io.testing.user_io_fake import (
     assert_displayed_in_order,
     assert_not_displayed,
 )
-
-from tests.constants import PYTEST_MANUAL_MARKER
 from verploy._constants import GIT_PROGRAM
 from verploy.verploy import git_credentials_present, run_hook, verploy
+
+from tests.constants import PYTEST_MANUAL_MARKER
 
 PYTHON_PROGRAM = program_at_path(Path(sys.executable))
 
