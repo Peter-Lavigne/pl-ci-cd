@@ -211,9 +211,9 @@ def test_worktree_displays_progress_for_each_phase(
 
     assert_displayed_in_order(
         f"Fast-forward merging feature into {MAIN}",
-        "Pushing",
         "Deploying",
         "Deployed.",
+        "Pushing",
     )
 
 
@@ -297,9 +297,9 @@ def test_displays_progress_without_rebase_or_merge(
     verploy(repo_dir=repo_dir)
 
     assert_displayed_in_order(
-        "Pushing",
         "Deploying",
         "Deployed.",
+        "Pushing",
     )
 
 

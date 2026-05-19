@@ -94,13 +94,13 @@ def verploy(
     else:
         _verploy_main(repo_dir, manual_script)
 
-    display("Pushing...")
-    git_push()
-
     if deploy_script is not None:
         display(f"Deploying ({deploy_script})...")
         _run_deploy(deploy_script, repo_dir)
         display("Deployed.")
+
+    display("Pushing...")
+    git_push()
 
 
 def _verploy_main(
