@@ -14,19 +14,10 @@ rm -f dist/*.whl dist/*.tar.gz
 echo 'Running "uv version --bump patch"...'
 uv version --bump patch
 
-echo 'Running "uv build --no-sources"...'
-uv build --no-sources
+echo 'Running "uv build --no-sources -o dist"...'
+uv build --no-sources -o dist
 
-echo 'Running "uv publish"...'
-uv publish
-
-echo 'Running "git add -A..."'
-git add -A
-
-echo 'Running "git commit -m "Bump version to $(uv version --short)"..."'
-git commit -m "Bump version to $(uv version --short)"
-
-echo 'Running "git push"...'
-git push
+echo 'Running "uv publish dist/*"...'
+uv publish dist/*
 
 echo 'Release complete.'
