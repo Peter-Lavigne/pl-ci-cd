@@ -90,6 +90,9 @@ def verploy(
     deploy_script, manual_script = _validate_verploy_dir(repo_dir)
 
     if worktree is not None:
+        wt_manual = worktree / ".verploy" / "manual"
+        if wt_manual.exists():
+            manual_script = wt_manual
         _verploy_worktree(worktree, repo_dir, manual_script)
     else:
         _verploy_main(repo_dir, manual_script)

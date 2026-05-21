@@ -222,7 +222,7 @@ def test_deploy_runs_manual_checks_after_verification(
 ) -> None:
     (worktree_dir / ARBITRARY_FILENAME).write_text(ARBITRARY_TEXT)
     _commit_all(worktree_dir, "add feature")
-    manual_script = repo_dir / ".verploy" / "manual"
+    manual_script = worktree_dir / ".verploy" / "manual"
 
     verploy(worktree=worktree_dir, repo_dir=repo_dir)
 
@@ -327,6 +327,21 @@ def test_deploy_rolls_back_if_manual_checks_rejected_on_worktree(
     assert _commit_sha(repo_dir) == main_head
     mock_for(git_push).assert_not_called()
     assert not marker.exists()
+
+
+def test_worktree_uses_worktree_manual_script(
+    tmp_path: Path, repo_dir: Path, worktree_dir: Path
+) -> None:
+    marker = tmp_path / "manual_ran.txt"
+    _commit_manual_script(repo_dir, "exit 0")
+    _git(worktree_dir, "rebase", MAIN)
+    _commit_manual_script(worktree_dir, f"{TOUCH} {marker}")
+    (worktree_dir / ARBITRARY_FILENAME).write_text(ARBITRARY_TEXT)
+    _commit_all(worktree_dir, "add feature")
+
+    verploy(worktree=worktree_dir, repo_dir=repo_dir)
+
+    assert marker.exists()
 
 
 def test_main_errors_when_nothing_to_deploy(tmp_path: Path, repo_dir: Path) -> None:
